@@ -1,0 +1,19 @@
+.root {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10%;
+    grid-row-gap: 10%;
+    margin: 20px;
+}
+
+.glyphCard {
+    border: none !important;
+}
+
+.spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
