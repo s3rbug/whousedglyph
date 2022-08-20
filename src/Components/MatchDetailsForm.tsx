@@ -5,6 +5,7 @@ import { Form } from "react-bootstrap";
 import { setGlyphs } from "../redux/middleware/glyph";
 import { useTypedDispatch } from "../redux/store/store";
 import { uiActions } from "../redux/slices/ui";
+import { glyphActions } from "../redux/slices/glyph";
 
 type FormDataType = {
     matchId: string;
@@ -15,6 +16,7 @@ const MatchDetailsForm = () => {
     const dispatch = useTypedDispatch()
     const onSubmit = (data: FormDataType) => {
         dispatch(uiActions.setIsLoading({isLoading: true}))
+        dispatch(glyphActions.clearGlyphs())
         dispatch(setGlyphs(data.matchId))
     }
 

@@ -29,15 +29,18 @@ const glyphSlice = createSlice({
             return {
                 ...state,
                 glyphs: newGlyphs.map(newGlyph => ({
-                    heroId: 1,
+                    heroId: newGlyph.heroID,
                     heroName: "Pudge",
-                    heroPicture: "",
-                    nickname: newGlyph.user_name,
+                    nickname: newGlyph.username,
                     time: parseTime(newGlyph.minute, newGlyph.second),
                     teamType: TeamType.Dire
                 } as GlyphType)
                 )
             }
+        },
+
+        clearGlyphs(state) {
+            state.glyphs = [] as Array<GlyphType>
         }
     }
 })

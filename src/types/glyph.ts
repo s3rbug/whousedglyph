@@ -13,15 +13,15 @@ export enum TeamType {
 }
 
 export type ServerGlyphType = {
-    user_name: string,
+    username: string,
     minute: number,
-    second: number
+    second: number,
+    heroID: number
 }
 
 export type GlyphType = {
     heroId: number;
     heroName: string;
-    heroPicture: string;
     nickname: string;
     time: string;
     teamType: TeamType;
