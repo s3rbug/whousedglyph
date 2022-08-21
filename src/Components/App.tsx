@@ -1,18 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import GlyphUsers from "./GlyphUsers";
 import MatchDetailsForm from "./MatchDetailsForm";
 import Title from "./Title";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 const App = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {   
-  }, [dispatch])
   return (
     <>
       <Title/>
       <MatchDetailsForm/>
-      <GlyphUsers/>
+      <Routes>
+        <Route path="/matches/:matchId" element={<GlyphUsers/>} />
+      </Routes>
     </>
   );
 }

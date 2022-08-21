@@ -1,14 +1,32 @@
-.root {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 10%;
-    grid-row-gap: 10%;
-    margin: 20px;
+@media (min-width: 992px) {
+    .root {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-.glyphCard {
-    border: none !important;
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .root {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .root {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .root {
+        grid-template-columns: 1fr;
+    }
+}
+
+.root {
+    grid-row-gap: 20px;
+    grid-column-gap: 10%;
+    display: grid;
+    margin: 20px;
 }
 
 .spinner {
@@ -16,4 +34,12 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.nicknameText {
+    font-size: 1.3em;
 }
