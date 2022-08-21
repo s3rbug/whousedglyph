@@ -27,4 +27,3 @@ yarn-error.log*
 *.dem
 
 # See https://github.com/Masedko/go_api_glyph
-/backend
