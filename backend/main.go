@@ -97,8 +97,12 @@ func getGlyphsByID() usecase.Interactor {
 			// Downloading demo file
 			sb, err := utils.GetMatchStructWithMatchID(match_id)
 
+			if err != nil {
+				return status.Wrap(err, status.Internal)
+			}
+
 			URL_demo := fmt.Sprintf("http://replay%d.valve.net/570/%d_%d.dem.bz2", sb[0].Cluster, sb[0].Match_id, sb[0].Replay_salt)
-			fmt.Println("TUTA")
+
 			err = utils.RetrieveFileWithURL(URL_demo, sb, filename)
 			if err != nil {
 				return status.Wrap(err, status.Internal)
