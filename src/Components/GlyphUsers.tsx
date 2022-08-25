@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Card, Spinner } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { setGlyphs } from "../redux/middleware/glyph"
 import { uiActions } from "../redux/slices/ui"
 import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
@@ -39,14 +39,15 @@ const GlyphUsers = () => {
     const glyphs = useTypedSelector(state => state.glyph.glyphs)
     const isLoading = useTypedSelector(state => state.ui.isLoading)
     const dispatch = useTypedDispatch()
-    const {matchId} = useParams<"matchId">()
+    const [queryParams] = useSearchParams();
 
-    useEffect(() => {    
+    useEffect(() => {
+        const matchId = queryParams.get("replay")
         if(matchId){
             dispatch(uiActions.setIsLoading({isLoading: true}))   
             dispatch(setGlyphs(matchId)) 
         }
-    }, [matchId, dispatch])
+    }, [queryParams, dispatch])
 
     return (
         isLoading ? 

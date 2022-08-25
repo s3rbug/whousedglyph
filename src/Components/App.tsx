@@ -9,7 +9,7 @@ const App = () => {
       <Title/>
       <MatchDetailsForm/>
       <Routes>
-        <Route path="/matches/:matchId" element={<GlyphUsers/>} />
+        <Route index element={<GlyphUsers/>} />
       </Routes>
     </>
   );
