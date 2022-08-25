@@ -1,6 +1,7 @@
 {
   "name": "whousedglyph",
   "version": "0.1.0",
+  "homepage": "https://s3rbug.github.io/whousedglyph",
   "private": true,
   "dependencies": {
     "@redux-devtools/extension": "^3.2.2",
@@ -16,6 +17,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "concurrently": "^7.3.0",
+    "gh-pages": "^4.0.0",
     "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -35,7 +37,9 @@
     "start": "concurrently \"react-scripts start\" \"cd ./backend && go run .\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
