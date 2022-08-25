@@ -17,13 +17,12 @@ const Glyph = ({ glyph }: GlyphProps) => {
         <Card.Img src={require(`../assets/hero_${glyph.heroId}.png`)} alt={glyph.heroName}/>
         <Card.Body>
             <Card.Text className={classes.nicknameText}>
-                {/* <a 
+                <a 
                 href={`https://steamcommunity.com/profiles/${glyph.steamId}/`}
                 target="_blank"
                 rel="noreferrer noopener">
                     {`${glyph.nickname}`} 
-                </a> */}
-                {`${glyph.nickname}`}
+                </a>
             </Card.Text>
             <Card.Text>
                 {'Glyph time: '}

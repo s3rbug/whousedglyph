@@ -33,7 +33,8 @@ const glyphSlice = createSlice({
                     heroName: "Pudge",
                     nickname: newGlyph.username,
                     time: parseTime(newGlyph.minute, newGlyph.second),
-                    teamType: TeamType.Dire
+                    teamType: TeamType.Dire,
+                    steamId: newGlyph.user_steamID
                 } as GlyphType)
                 )
             }

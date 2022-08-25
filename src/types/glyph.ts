@@ -16,7 +16,8 @@ export type ServerGlyphType = {
     username: string,
     minute: number,
     second: number,
-    heroID: number
+    heroID: number,
+    user_steamID: string
 }
 
 export type GlyphType = {
@@ -25,4 +26,5 @@ export type GlyphType = {
     nickname: string;
     time: string;
     teamType: TeamType;
+    steamId: string
 }
