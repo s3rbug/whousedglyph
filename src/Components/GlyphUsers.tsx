@@ -6,6 +6,7 @@ import { glyphActions } from "../redux/slices/glyph"
 import { uiActions } from "../redux/slices/ui"
 import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
 import { GlyphType } from "../types/glyph"
+import CustomLink from "../utils/CustomLink"
 import classes from "./GlyphUsers.module.css"
 
 type GlyphProps = {
@@ -18,12 +19,23 @@ const Glyph = ({ glyph }: GlyphProps) => {
         <Card.Img src={require(`../assets/hero_${glyph.heroId}.png`)} alt={glyph.heroName}/>
         <Card.Body>
             <Card.Text className={classes.nicknameText}>
-                <a 
-                href={`https://steamcommunity.com/profiles/${glyph.steamId}/`}
-                target="_blank"
-                rel="noreferrer noopener">
+                <span>
                     {`${glyph.nickname}`} 
-                </a>
+                </span>
+                <span className={classes.icons}>
+                    <CustomLink href={`https://steamcommunity.com/profiles/${glyph.steamId}/`}>
+                        <img src={require(`../assets/steam.png`)} alt="steam" />
+                    </CustomLink>
+                    <CustomLink href={`https://stratz.com/players/${glyph.dotaUserId}`}>
+                        <img width="30px" height="30px" src={require(`../assets/stratz.png`)} alt="stratz" />
+                    </CustomLink>
+                    <CustomLink href={`https://www.dotabuff.com/players/${glyph.dotaUserId}`}>
+                        <img src={require(`../assets/dotabuff.png`)} alt="dotabuff" />
+                    </CustomLink>
+                    <CustomLink href={`https://www.opendota.com/players/${glyph.dotaUserId}`}>
+                        <img src={require(`../assets/opendota.png`)} alt="opendota" />
+                    </CustomLink>
+                </span>
             </Card.Text>
             <Card.Text>
                 {'Glyph time: '}
@@ -77,9 +89,9 @@ const GlyphUsers = () => {
                     <Alert.Heading>
                         Not found
                     </Alert.Heading>
-                    <p>
+                    <span>
                         {error}
-                    </p>
+                    </span>
                 </Alert>
             </div>
         )

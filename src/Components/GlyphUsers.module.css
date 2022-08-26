@@ -41,5 +41,15 @@
 }
 
 .nicknameText {
-    font-size: 1.3em;
+    font-size: 1.6em;
+    margin-bottom: 0.5rem;
+}
+
+.icons {
+    display: flex;
+    flex-grow: 1;
+}
+
+.icons a {
+    margin-right: 10px;
 }

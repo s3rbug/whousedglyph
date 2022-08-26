@@ -4,7 +4,7 @@
     margin-top: 10px;
     color: black;
     font-family: 'Roboto', sans-serif;
-    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
     user-select: none;
 }
 

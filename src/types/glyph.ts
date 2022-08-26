@@ -28,5 +28,6 @@ export type GlyphType = {
     nickname: string;
     time: string;
     teamType: TeamType;
-    steamId: string
+    steamId: string;
+    dotaUserId: string
 }

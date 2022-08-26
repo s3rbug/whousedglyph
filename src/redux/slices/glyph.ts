@@ -22,6 +22,10 @@ const getHeroName = (heroId: number) => {
     return hero ? hero.localized_name : "unknown"
 }
 
+const getDotaId = (userId: string): string => {
+    return (BigInt(userId) - BigInt("76561197960265728")).toString()
+}
+
 const glyphSlice = createSlice({
     name: "glyph",
     initialState: initialState,
@@ -51,7 +55,8 @@ const glyphSlice = createSlice({
                         nickname: newGlyph.username,
                         time: parseTime(newGlyph.minute, newGlyph.second),
                         teamType: TeamType.Dire,
-                        steamId: newGlyph.user_steamID
+                        steamId: newGlyph.user_steamID,
+                        dotaUserId: getDotaId(newGlyph.user_steamID)
                     } as GlyphType)
                 )
             }
