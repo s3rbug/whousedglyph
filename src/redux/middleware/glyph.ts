@@ -12,16 +12,19 @@ export const setGlyphs = (
             dispatch(glyphActions.setGlyphs({newGlyphs: response.data}))
             dispatch(glyphActions.setMatchId({matchId}))
             dispatch(uiActions.setIsLoading({isLoading: false}))
+            dispatch(glyphActions.setQueryMatchId({queryMatchId: matchId}))
         }
     })
     .catch((error: AxiosError) => {
-        if(error?.response?.status === 503){            
+        if(error?.response?.status === 503 || error?.response?.status === 0){            
             setTimeout(() => {
                 dispatch(setGlyphs(matchId))
             }, 30000);
         }
         else {
             dispatch(uiActions.setIsLoading({isLoading: false}))
+            dispatch(uiActions.setError({error: `Match ${matchId} does not exist`}))
+            dispatch(glyphActions.setQueryMatchId({queryMatchId: null}))
         }
     })
 }

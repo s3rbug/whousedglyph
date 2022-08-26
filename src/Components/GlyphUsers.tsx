@@ -1,7 +1,8 @@
 import { useEffect } from "react"
-import { Card, Spinner } from "react-bootstrap"
-import { useSearchParams } from "react-router-dom"
+import { Alert, Card, Spinner } from "react-bootstrap"
+import { useSearchParams, createSearchParams } from "react-router-dom"
 import { setGlyphs } from "../redux/middleware/glyph"
+import { glyphActions } from "../redux/slices/glyph"
 import { uiActions } from "../redux/slices/ui"
 import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
 import { GlyphType } from "../types/glyph"
@@ -38,23 +39,52 @@ const Glyph = ({ glyph }: GlyphProps) => {
 const GlyphUsers = () => {
     const glyphs = useTypedSelector(state => state.glyph.glyphs)
     const isLoading = useTypedSelector(state => state.ui.isLoading)
+    const error = useTypedSelector(state => state.ui.error)
+    const queryMatchId = useTypedSelector(state => state.glyph.queryMatchId)
     const dispatch = useTypedDispatch()
-    const [queryParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        const matchId = queryParams.get("replay")
+        const matchId = searchParams.get("replay")
         if(matchId){
             dispatch(uiActions.setIsLoading({isLoading: true}))   
+            dispatch(glyphActions.setQueryMatchId({queryMatchId: matchId}))
             dispatch(setGlyphs(matchId)) 
         }
-    }, [queryParams, dispatch])
+    }, [searchParams, dispatch])
+    
+    useEffect(() => {
+        if(queryMatchId){
+            setSearchParams(createSearchParams({replay: queryMatchId}))
+        }
+        else{            
+            searchParams.delete("replay")
+            setSearchParams(searchParams)
+        }
+    }, [queryMatchId, searchParams, setSearchParams])
 
+    if(isLoading){
+        return (
+            <div className={classes.center}>
+                <Spinner animation="border" variant="primary" />
+            </div>
+        )
+    }
+    else if(error){
+        return (
+            <div className={classes.center}>
+                <Alert variant="danger">
+                    <Alert.Heading>
+                        Not found
+                    </Alert.Heading>
+                    <p>
+                        {error}
+                    </p>
+                </Alert>
+            </div>
+        )
+    }
     return (
-        isLoading ? 
-        <div className={classes.spinner}>
-            <Spinner animation="border" variant="primary" />
-        </div>
-        :
         <div className={classes.root}>
             {
                 glyphs.map((glyph, glyphIndex) => {

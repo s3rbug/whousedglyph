@@ -1,10 +1,12 @@
 export type GlyphStateType = {
     matchId: string;
+    queryMatchId: string | null;
     glyphs: Array<GlyphType>;
 }
 
 export type UiStateType = {
     isLoading: boolean;
+    error: null | string;
 }
 
 export enum TeamType {

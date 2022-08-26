@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: GlyphStateType = {
     matchId: "",
+    queryMatchId: null,
     glyphs: [] as Array<GlyphType>
 }
 
@@ -30,6 +31,11 @@ const glyphSlice = createSlice({
             state.matchId = matchId
         },
 
+        setQueryMatchId(state, action: PayloadAction<{queryMatchId: string | null}>){
+            const {queryMatchId} = action.payload
+            state.queryMatchId = queryMatchId
+        },
+
         addGlyph(state, action: PayloadAction<{newGlyph: GlyphType}>){
             const {newGlyph} = action.payload
             state.glyphs.push(newGlyph)
@@ -40,13 +46,13 @@ const glyphSlice = createSlice({
             return {
                 ...state,
                 glyphs: newGlyphs.map(newGlyph => ({
-                    heroId: getHeroId(newGlyph.heroID),
-                    heroName: getHeroName(newGlyph.heroID),
-                    nickname: newGlyph.username,
-                    time: parseTime(newGlyph.minute, newGlyph.second),
-                    teamType: TeamType.Dire,
-                    steamId: newGlyph.user_steamID
-                } as GlyphType)
+                        heroId: getHeroId(newGlyph.heroID),
+                        heroName: getHeroName(newGlyph.heroID),
+                        nickname: newGlyph.username,
+                        time: parseTime(newGlyph.minute, newGlyph.second),
+                        teamType: TeamType.Dire,
+                        steamId: newGlyph.user_steamID
+                    } as GlyphType)
                 )
             }
         },

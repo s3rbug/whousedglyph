@@ -2,7 +2,8 @@ import { UiStateType } from './../../types/glyph';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: UiStateType = {
-    isLoading: false
+    isLoading: false,
+    error: null
 }
 
 const uiSlice = createSlice({
@@ -12,6 +13,10 @@ const uiSlice = createSlice({
         setIsLoading(state, action: PayloadAction<{isLoading: boolean}>) {
             const {isLoading} = action.payload
             state.isLoading = isLoading
+        },
+        setError(state, action: PayloadAction<{error: string | null}>) {
+            const {error} = action.payload
+            state.error = error
         }
     }
 })

@@ -6,7 +6,6 @@ import { setGlyphs } from "../redux/middleware/glyph";
 import { useTypedDispatch } from "../redux/store/store";
 import { uiActions } from "../redux/slices/ui";
 import { glyphActions } from "../redux/slices/glyph";
-import { useSearchParams, createSearchParams } from "react-router-dom";
 
 type FormDataType = {
     matchId: string;
@@ -14,21 +13,29 @@ type FormDataType = {
 
 const MatchDetailsForm = () => {
     const {register, handleSubmit} = useForm<FormDataType>({})
-    const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useTypedDispatch()
     
     const onSubmit = (data: FormDataType) => {
         dispatch(uiActions.setIsLoading({isLoading: true}))
+        dispatch(uiActions.setError({error: null}))
         dispatch(glyphActions.clearGlyphs())
-        dispatch(setGlyphs(data.matchId))
-        setSearchParams(createSearchParams({replay: data.matchId}))
+        dispatch(setGlyphs(data.matchId))        
     }
 
     return (
     <Form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className={classes.formGroup}>
-            <Form.Control type="text" className={classes.lineedit} placeholder="Enter match id" {...register("matchId", {required: "Enter match id"})}/>
-            <Button variant="primary" type="submit" className={classes.button}>
+            <Form.Control
+                className={classes.lineedit} 
+                type="text"
+                placeholder="Enter match id" 
+                {...register("matchId", {required: "Enter match id"})}
+            />
+            <Button 
+                variant="primary" 
+                type="submit" 
+                className={classes.button}
+            >
                 Submit
             </Button>
         </Form.Group>
