@@ -1,3 +1,4 @@
+import { heroes } from './../../utils/heroes';
 import { GlyphStateType, GlyphType, TeamType, ServerGlyphType } from './../../types/glyph';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,6 +9,16 @@ const initialState: GlyphStateType = {
 
 const parseTime = (minute: number, second: number): string => {
     return `${minute < 10 ? "0" + minute : minute}:${second < 10 ? "0" + second : second}`
+}
+
+const getHeroId = (heroId: number) => {
+    const hero = heroes.find(hero => hero.id === heroId)
+    return hero ? heroId : 0
+}
+
+const getHeroName = (heroId: number) => {
+    const hero = heroes.find(hero => hero.id === heroId)
+    return hero ? hero.localized_name : "unknown"
 }
 
 const glyphSlice = createSlice({
@@ -29,8 +40,8 @@ const glyphSlice = createSlice({
             return {
                 ...state,
                 glyphs: newGlyphs.map(newGlyph => ({
-                    heroId: newGlyph.heroID,
-                    heroName: "Pudge",
+                    heroId: getHeroId(newGlyph.heroID),
+                    heroName: getHeroName(newGlyph.heroID),
                     nickname: newGlyph.username,
                     time: parseTime(newGlyph.minute, newGlyph.second),
                     teamType: TeamType.Dire,
