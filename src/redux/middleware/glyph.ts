@@ -19,7 +19,7 @@ export const setGlyphs = (
         if(error?.response?.status === 503 || error?.response?.status === 0){            
             setTimeout(() => {
                 dispatch(setGlyphs(matchId))
-            }, 30000);
+            }, 10000);
         }
         else {
             dispatch(uiActions.setIsLoading({isLoading: false}))
