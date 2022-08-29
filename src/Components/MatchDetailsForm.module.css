@@ -1,7 +1,13 @@
 .formGroup {
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-left: 30px;
+}
+
+@media (max-width: 992px) {
+    .marginTop {
+        margin-top: 175px;
+    }
 }
 
 .lineedit {
@@ -9,4 +15,10 @@
     margin-right: 10px;
     border-radius: 15px !important;
     padding-left: 10px;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

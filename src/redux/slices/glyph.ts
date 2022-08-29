@@ -26,6 +26,10 @@ const getDotaId = (userId: string): string => {
     return (BigInt(userId) - BigInt("76561197960265728")).toString()
 }
 
+const getTeamType = (teamType: 2 | 3): TeamType => {
+    return teamType === 2 ? TeamType.Radiant : TeamType.Dire
+}
+
 const glyphSlice = createSlice({
     name: "glyph",
     initialState: initialState,
@@ -54,7 +58,7 @@ const glyphSlice = createSlice({
                         heroName: getHeroName(newGlyph.heroID),
                         nickname: newGlyph.username,
                         time: parseTime(newGlyph.minute, newGlyph.second),
-                        teamType: TeamType.Dire,
+                        teamType: getTeamType(newGlyph.team),
                         steamId: newGlyph.user_steamID,
                         dotaUserId: getDotaId(newGlyph.user_steamID)
                     } as GlyphType)
@@ -64,6 +68,8 @@ const glyphSlice = createSlice({
 
         clearGlyphs(state) {
             state.glyphs = [] as Array<GlyphType>
+            state.matchId = ""
+            state.queryMatchId = null
         }
     }
 })

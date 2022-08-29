@@ -1,11 +1,13 @@
-.title {
+.link img {
+    height: 150px;
+}
+
+.root {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    color: black;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    user-select: none;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 575.98px) {
