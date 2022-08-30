@@ -7,21 +7,28 @@ import { useTypedDispatch, useTypedSelector } from "../redux/store/store";
 import { uiActions } from "../redux/slices/ui";
 import { glyphActions } from "../redux/slices/glyph";
 import clsx from "clsx";
+import { useEffect } from "react";
 
 type FormDataType = {
     matchId: string;
 }
 
 const MatchDetailsForm = () => {
-    const {register, handleSubmit} = useForm<FormDataType>({})
+    const {register, handleSubmit, reset} = useForm<FormDataType>({})
     const dispatch = useTypedDispatch()
     const queryMatchId = useTypedSelector(state => state.glyph.queryMatchId)
     const onSubmit = (data: FormDataType) => {
-        dispatch(uiActions.setIsLoading({isLoading: true}))
         dispatch(uiActions.setError({error: null}))
         dispatch(glyphActions.clearGlyphs())
-        dispatch(setGlyphs(data.matchId))        
+        dispatch(setGlyphs(data.matchId))
+        console.log("from submit");
     }
+
+    useEffect(() => {
+        if(queryMatchId){
+            reset()
+        }
+    }, [queryMatchId, reset])
 
     return (
     <div className={clsx(classes.details, queryMatchId && classes.marginTop)}>

@@ -19,6 +19,8 @@ const MatchDetails = () => {
         <Card className={classes.card}>
             <Card.Body className={classes.cardBody}>
                 <Card.Title ref={tooltipTarget} className={classes.title} onClick={copyMatchIdToClipboard}>
+                    {
+                    matchId !== "" && 
                     <Button onFocus={
                         (e) => {
                             setTimeout(() => {
@@ -26,9 +28,11 @@ const MatchDetails = () => {
                             }, 500)
                         }
                     }
-                    variant="outline-dark">
+                    variant="outline-dark"
+                    >
                         {`${matchId}`}
                     </Button>
+                    }
                 </Card.Title>
                 <Card.Text>
                 <span className={classes.icons}>

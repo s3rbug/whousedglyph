@@ -3,7 +3,6 @@ import { Alert, Card, Spinner } from "react-bootstrap"
 import { useSearchParams, createSearchParams } from "react-router-dom"
 import { setGlyphs } from "../redux/middleware/glyph"
 import { glyphActions } from "../redux/slices/glyph"
-import { uiActions } from "../redux/slices/ui"
 import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
 import { GlyphType, TeamType } from "../types/glyph"
 import CustomLink from "../utils/CustomLink"
@@ -17,12 +16,17 @@ const Glyph = ({ glyph }: GlyphProps) => {
     const getTeamTypeImage = (): string => {
         return glyph.teamType === TeamType.Dire ? require(`../assets/dire.png`) : require(`../assets/radiant.png`)
     }
+    const getHeroLink = (): string => {
+        return glyph.heroName === "unknown" ? "" : `https://dota2.fandom.com/wiki/${glyph.heroName}`
+    }
     return (
     <Card>
-        <Card.Img
-            src={require(`../assets/hero_${glyph.heroId}.png`)} 
-            alt={glyph.heroName}
-        />
+        <CustomLink href={getHeroLink()}>
+            <Card.Img
+                src={require(`../assets/hero_${glyph.heroId}.png`)} 
+                alt={glyph.heroName}
+            />
+        </CustomLink>
         <Card.Body className={classes.cardBody}>
             <Card.Text className={classes.nicknameText}>
                 <span className={classes.nick}>
@@ -67,9 +71,11 @@ const GlyphUsers = () => {
 
     useEffect(() => {
         const matchId = searchParams.get("replay")
-        if(matchId){
-            dispatch(uiActions.setIsLoading({isLoading: true}))   
+        if(matchId && queryMatchId !== matchId){ 
             dispatch(glyphActions.setQueryMatchId({queryMatchId: matchId}))
+            console.log("search params");
+            console.log({queryMatchId, matchId});
+            
             dispatch(setGlyphs(matchId)) 
         }
     }, [searchParams, dispatch])

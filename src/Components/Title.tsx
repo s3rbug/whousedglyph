@@ -9,12 +9,15 @@ const Title = () => {
     const queryMatchId = useTypedSelector(state => state.glyph.queryMatchId)
     return (
         <div className={classes.root}>
-            {queryMatchId && <MatchDetails />}    
-            <NavLink onClick={() => {
+            {
+            queryMatchId 
+            ? <MatchDetails />
+            : <NavLink onClick={() => {
                 dispatch(glyphActions.clearGlyphs())
             }} className={classes.link} to="">
                 <img src={require("../assets/logo.png")} alt="logo" />
             </NavLink>
+            }    
         </div>
     )
 }

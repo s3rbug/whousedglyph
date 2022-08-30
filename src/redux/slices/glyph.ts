@@ -68,8 +68,6 @@ const glyphSlice = createSlice({
 
         clearGlyphs(state) {
             state.glyphs = [] as Array<GlyphType>
-            state.matchId = ""
-            state.queryMatchId = null
         }
     }
 })

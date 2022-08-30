@@ -9,7 +9,7 @@ const CustomLink = ({href, children}: PropsType) => {
     return (
         <a
             href={href}
-            target="_blank"
+            target={href === "" ? "_self" : "_blank"}
             rel="noreferrer noopener"
         >
             {children}
