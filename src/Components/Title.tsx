@@ -7,10 +7,11 @@ import classes from "./Title.module.css"
 const Title = () => {
     const dispatch = useTypedDispatch()
     const queryMatchId = useTypedSelector(state => state.glyph.queryMatchId)
+    const isLoading = useTypedSelector(state => state.ui.isLoading)
     return (
         <div className={classes.root}>
             {
-            queryMatchId 
+            queryMatchId && !isLoading
             ? <MatchDetails />
             : <NavLink onClick={() => {
                 dispatch(glyphActions.clearGlyphs())

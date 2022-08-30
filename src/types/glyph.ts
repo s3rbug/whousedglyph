@@ -6,8 +6,13 @@ export type GlyphStateType = {
 
 export type UiStateType = {
     isLoading: boolean;
-    error: null | string;
+    error: UiErrorType;
 }
+
+export type UiErrorType = {
+    message: string,
+    header: string
+} | null
 
 export enum TeamType {
     Dire = 0,

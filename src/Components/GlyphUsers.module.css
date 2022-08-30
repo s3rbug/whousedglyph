@@ -20,20 +20,6 @@
     .table {
         grid-template-columns: 1fr;
     }
-    .icons a img {
-        width: 40px !important;
-        height: 40px !important;
-    }
-    .nicknameText {
-        margin-bottom: 1.5rem !important;
-    }
-    .icons {
-        margin-top: 10px;
-    }
-    .teamType {
-        width: 40px !important;
-        height: 40px !important;
-    }
 }
 
 .table {
@@ -49,46 +35,3 @@
     justify-content: center;
     margin-top: 20px;
 }
-
-.bold {
-    font-weight: bold;
-}
-
-.glyphTime {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.teamType {
-    width: 30px;
-    height: 30px;
-    border-radius: 10%;
-    margin-right: 10px;
-}
-
-.icons a img {
-    width: 30px;
-    height: 30px;
-}
-
-.nicknameText {
-    font-size: 1.6em;
-    margin-bottom: 0.5rem;
-}
-
-.icons {
-    display: flex;
-    flex-grow: 1;
-}
-
-.icons a {
-    margin-right: 10px;
-}
-
-.cardBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-

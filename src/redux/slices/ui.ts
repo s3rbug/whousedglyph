@@ -1,4 +1,4 @@
-import { UiStateType } from './../../types/glyph';
+import { UiErrorType, UiStateType } from './../../types/glyph';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: UiStateType = {
@@ -14,7 +14,7 @@ const uiSlice = createSlice({
             const {isLoading} = action.payload
             state.isLoading = isLoading
         },
-        setError(state, action: PayloadAction<{error: string | null}>) {
+        setError(state, action: PayloadAction<{error: UiErrorType}>) {
             const {error} = action.payload
             state.error = error
         }

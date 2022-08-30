@@ -1,65 +1,11 @@
 import { useEffect } from "react"
-import { Alert, Card, Spinner } from "react-bootstrap"
+import { Alert, Spinner } from "react-bootstrap"
 import { useSearchParams, createSearchParams } from "react-router-dom"
 import { setGlyphs } from "../redux/middleware/glyph"
 import { glyphActions } from "../redux/slices/glyph"
 import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
-import { GlyphType, TeamType } from "../types/glyph"
-import CustomLink from "../utils/CustomLink"
+import Glyph from "./Glyph"
 import classes from "./GlyphUsers.module.css"
-
-type GlyphProps = {
-    glyph: GlyphType
-}
-
-const Glyph = ({ glyph }: GlyphProps) => {
-    const getTeamTypeImage = (): string => {
-        return glyph.teamType === TeamType.Dire ? require(`../assets/dire.png`) : require(`../assets/radiant.png`)
-    }
-    const getHeroLink = (): string => {
-        return glyph.heroName === "unknown" ? "" : `https://dota2.fandom.com/wiki/${glyph.heroName}`
-    }
-    return (
-    <Card>
-        <CustomLink href={getHeroLink()}>
-            <Card.Img
-                src={require(`../assets/hero_${glyph.heroId}.png`)} 
-                alt={glyph.heroName}
-            />
-        </CustomLink>
-        <Card.Body className={classes.cardBody}>
-            <Card.Text className={classes.nicknameText}>
-                <span className={classes.nick}>
-                    <img className={classes.teamType} src={getTeamTypeImage()} alt="Team type" />
-                    {`${glyph.nickname}`} 
-                </span>
-                <span className={classes.icons}>
-                    <CustomLink href={`https://steamcommunity.com/profiles/${glyph.steamId}/`}>
-                        <img src={require(`../assets/steam.png`)} alt="steam" />
-                    </CustomLink>
-                    <CustomLink href={`https://stratz.com/players/${glyph.dotaUserId}`}>
-                        <img src={require(`../assets/stratz.png`)} alt="stratz" />
-                    </CustomLink>
-                    <CustomLink href={`https://www.dotabuff.com/players/${glyph.dotaUserId}`}>
-                        <img src={require(`../assets/dotabuff.png`)} alt="dotabuff" />
-                    </CustomLink>
-                    <CustomLink href={`https://www.opendota.com/players/${glyph.dotaUserId}`}>
-                        <img src={require(`../assets/opendota.png`)} alt="opendota" />
-                    </CustomLink>
-                </span>
-            </Card.Text>
-            <Card.Text className={classes.glyphTime}>
-                <span>
-                    {'Glyph time: '}
-                    <span className={classes.bold}>
-                        {`${glyph.time}`}
-                    </span>
-                </span>
-            </Card.Text>
-        </Card.Body>
-    </Card>
-    )
-}
 
 const GlyphUsers = () => {
     const glyphs = useTypedSelector(state => state.glyph.glyphs)
@@ -72,10 +18,7 @@ const GlyphUsers = () => {
     useEffect(() => {
         const matchId = searchParams.get("replay")
         if(matchId && queryMatchId !== matchId){ 
-            dispatch(glyphActions.setQueryMatchId({queryMatchId: matchId}))
-            console.log("search params");
-            console.log({queryMatchId, matchId});
-            
+            dispatch(glyphActions.setQueryMatchId({queryMatchId: matchId}))            
             dispatch(setGlyphs(matchId)) 
         }
     }, [searchParams, dispatch])
@@ -102,10 +45,10 @@ const GlyphUsers = () => {
             <div className={classes.center}>
                 <Alert variant="danger">
                     <Alert.Heading>
-                        Not found
+                        {error.header}
                     </Alert.Heading>
                     <span>
-                        {error}
+                        {error.message}
                     </span>
                 </Alert>
             </div>
