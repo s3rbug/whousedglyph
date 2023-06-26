@@ -24,24 +24,8 @@
     margin-right: 10px;
 }
 
-.cardBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.nick span {
+.wordBreakAll {
     word-break: break-all;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.glyphTime {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
 }
 
 .teamType {

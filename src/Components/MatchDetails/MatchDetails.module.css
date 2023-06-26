@@ -1,0 +1,17 @@
+.card {
+    width: 300px;
+}
+
+@media (max-width: 992px) {
+    .title button:hover {
+        color: black;
+        background: white;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+}
+
+.icons a img {
+    width: 35px;
+    height: 35px;
+}

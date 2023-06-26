@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
-import { glyphActions } from "../redux/slices/glyph"
-import { useTypedDispatch, useTypedSelector } from "../redux/store/store"
-import MatchDetails from "./MatchDetails"
+import { glyphActions } from "../../redux/slices/glyph"
+import { useTypedDispatch, useTypedSelector } from "../../redux/store/store"
+import MatchDetails from "../MatchDetails/MatchDetails"
 import classes from "./Title.module.css"
 
 const Title = () => {
@@ -9,14 +9,16 @@ const Title = () => {
     const queryMatchId = useTypedSelector(state => state.glyph.queryMatchId)
     const isLoading = useTypedSelector(state => state.ui.isLoading)
     return (
-        <div className={classes.root}>
+        <div className="d-flex justify-content-center mt-3">
             {
             queryMatchId && !isLoading
             ? <MatchDetails />
             : <NavLink onClick={() => {
                 dispatch(glyphActions.clearGlyphs())
-            }} className={classes.link} to="">
-                <img src={require("../assets/logo.png")} alt="logo" />
+            }} 
+            to=""
+            >
+                <img className={classes.logo} src={require("../../assets/logo.png")} alt="logo" />
             </NavLink>
             }    
         </div>

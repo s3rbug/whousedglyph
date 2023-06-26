@@ -1,13 +1,15 @@
+import clsx from "clsx"
 import { useRef, useState } from "react"
 import { Button, Card, Overlay, Tooltip } from "react-bootstrap"
-import { useTypedSelector } from "../redux/store/store"
-import CustomLink from "../utils/CustomLink"
+import { useTypedSelector } from "../../redux/store/store"
+import CustomLink from "../../utils/CustomLink"
 import classes from "./MatchDetails.module.css"
 
 const MatchDetails = () => {
     const matchId = useTypedSelector(state => state.glyph.matchId)
     const tooltipTarget = useRef(null)
     const [showTooltip, setShowTooltip] = useState(false)
+
     const copyMatchIdToClipboard = async () => {
         navigator.clipboard.writeText(matchId)
         setShowTooltip(true)
@@ -15,10 +17,11 @@ const MatchDetails = () => {
             setShowTooltip(false)
         }, 500)
     }
+
     return (
         <Card className={classes.card}>
-            <Card.Body className={classes.cardBody}>
-                <Card.Title ref={tooltipTarget} className={classes.title} onClick={copyMatchIdToClipboard}>
+            <Card.Body>
+                <Card.Title ref={tooltipTarget} className={clsx(classes.title, "d-flex flex-column justify-content-evenly ml-auto mr-auto")} onClick={copyMatchIdToClipboard}>
                     {
                     matchId !== "" && 
                     <Button onFocus={
@@ -29,21 +32,22 @@ const MatchDetails = () => {
                         }
                     }
                     variant="outline-dark"
+                    className="fs-3"
                     >
                         {`${matchId}`}
                     </Button>
                     }
                 </Card.Title>
                 <Card.Text>
-                <span className={classes.icons}>
+                <span className={clsx(classes.icons, "d-flex justify-content-around ps-4 pe-3 mt-2")}>
                     <CustomLink href={`https://stratz.com/matches/${matchId}`}>
-                        <img src={require(`../assets/stratz.png`)} alt="stratz" />
+                        <img src={require(`../../assets/stratz.png`)} alt="stratz" />
                     </CustomLink>
                     <CustomLink href={`https://www.dotabuff.com/matches/${matchId}`}>
-                        <img src={require(`../assets/dotabuff.png`)} alt="dotabuff" />
+                        <img src={require(`../../assets/dotabuff.png`)} alt="dotabuff" />
                     </CustomLink>
                     <CustomLink href={`https://www.opendota.com/matches/${matchId}`}>
-                        <img src={require(`../assets/opendota.png`)} alt="opendota" />
+                        <img src={require(`../../assets/opendota.png`)} alt="opendota" />
                     </CustomLink>
                 </span>
                 </Card.Text>

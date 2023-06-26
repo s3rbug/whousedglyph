@@ -1,12 +1,5 @@
-.link img {
+.logo {
     height: 150px;
-}
-
-.root {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 20px;
 }
 
 @media (max-width: 575.98px) {
