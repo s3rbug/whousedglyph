@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/whousedglyph/static/css/main.660ca0e2.css",
-    "main.js": "/whousedglyph/static/js/main.85a652ce.js",
+    "main.css": "/whousedglyph/static/css/main.7344fa6f.css",
+    "main.js": "/whousedglyph/static/js/main.8ed9f57b.js",
     "static/media/hero_136.png": "/whousedglyph/static/media/hero_136.e141d55649b1133b44ca.png",
     "static/media/hero_135.png": "/whousedglyph/static/media/hero_135.eca55ba2fb83c0179b19.png",
     "static/media/hero_137.png": "/whousedglyph/static/media/hero_137.71813f7dd2ef7494174e.png",
@@ -129,11 +129,11 @@
     "static/media/hero_74.png": "/whousedglyph/static/media/hero_74.a1abe72d0121fba9ac4b.png",
     "static/media/hero_91.png": "/whousedglyph/static/media/hero_91.b9b33812e2e657eaefe3.png",
     "index.html": "/whousedglyph/index.html",
-    "main.660ca0e2.css.map": "/whousedglyph/static/css/main.660ca0e2.css.map",
-    "main.85a652ce.js.map": "/whousedglyph/static/js/main.85a652ce.js.map"
+    "main.7344fa6f.css.map": "/whousedglyph/static/css/main.7344fa6f.css.map",
+    "main.8ed9f57b.js.map": "/whousedglyph/static/js/main.8ed9f57b.js.map"
   },
   "entrypoints": [
-    "static/css/main.660ca0e2.css",
-    "static/js/main.85a652ce.js"
+    "static/css/main.7344fa6f.css",
+    "static/js/main.8ed9f57b.js"
   ]
 }
