@@ -1,5 +1,5 @@
-export type GlyphStateType = {	matchId: string;
-	queryMatchId: string | null;
+export type GlyphStateType = {	
+	matchId: string | null;
 	glyphs: Array<GlyphType>;
 };
 

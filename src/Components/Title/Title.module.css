@@ -1,5 +1,10 @@
 .logo {
     height: 150px;
+    transition: transform .2s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 @media (max-width: 575.98px) {

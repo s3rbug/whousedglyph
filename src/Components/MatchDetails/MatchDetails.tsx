@@ -11,7 +11,7 @@ const MatchDetails = () => {
     const [showTooltip, setShowTooltip] = useState(false)
 
     const copyMatchIdToClipboard = async () => {
-        navigator.clipboard.writeText(matchId)
+        navigator.clipboard.writeText(matchId || "")
         setShowTooltip(true)
         setTimeout(() => {
             setShowTooltip(false)

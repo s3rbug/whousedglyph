@@ -13,7 +13,6 @@ export const setGlyphs =
 			.then((response) => {
 				dispatch(glyphActions.setGlyphs({ newGlyphs: response.data }));
 				dispatch(glyphActions.setMatchId({ matchId }));
-				dispatch(glyphActions.setQueryMatchId({ queryMatchId: matchId }));
 				dispatch(uiActions.setIsLoading({ isLoading: false }));
 			})
 			.catch((error: AxiosError) => {
@@ -36,7 +35,6 @@ export const setGlyphs =
 						},
 					})
 				);
-				dispatch(glyphActions.setQueryMatchId({ queryMatchId: null }));
 				dispatch(uiActions.setIsLoading({ isLoading: false }));
 			})
 			.finally(() => {

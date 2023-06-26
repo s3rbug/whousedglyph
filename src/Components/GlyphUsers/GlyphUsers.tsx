@@ -1,44 +1,34 @@
 import { useEffect } from "react";
-import { Alert, Spinner } from "react-bootstrap";
-import { useSearchParams, createSearchParams } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 import { setGlyphs } from "../../redux/middleware/glyph";
-import { glyphActions } from "../../redux/slices/glyph";
 import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import Glyph from "../Glyph/Glyph";
 import classes from "./GlyphUsers.module.css";
+import { useUrlMatchId } from "../../hooks/useUrlMatchId";
+import { CenteredSpinner } from "../CenteredSpinner/CenteredSpinner";
 
 const GlyphUsers = () => {
 	const glyphs = useTypedSelector((state) => state.glyph.glyphs);
 	const isLoading = useTypedSelector((state) => state.ui.isLoading);
+	const matchId = useTypedSelector((state) => state.glyph.matchId);
 	const error = useTypedSelector((state) => state.ui.error);
-	const queryMatchId = useTypedSelector((state) => state.glyph.queryMatchId);
+
 	const dispatch = useTypedDispatch();
-	const [searchParams, setSearchParams] = useSearchParams();
+
+	const { urlMatchId } = useUrlMatchId();
 
 	useEffect(() => {
-		const matchId = searchParams.get("replay");
-		if (matchId && queryMatchId !== matchId) {
-			dispatch(glyphActions.setQueryMatchId({ queryMatchId: matchId }));
-			dispatch(setGlyphs(matchId));
+		if (urlMatchId && !matchId) {			
+			dispatch(setGlyphs(urlMatchId));
 		}
-	}, [searchParams, dispatch]);
-
-	useEffect(() => {
-		if (queryMatchId) {
-			setSearchParams(createSearchParams({ replay: queryMatchId }));
-		} else {
-			searchParams.delete("replay");
-			setSearchParams(searchParams);
-		}
-	}, [queryMatchId, searchParams, setSearchParams]);
+	}, [urlMatchId, matchId, dispatch]);
 
 	if (isLoading) {
 		return (
-			<div className={classes.center}>
-				<Spinner animation="border" variant="primary" />
-			</div>
+			<CenteredSpinner />
 		);
-	} else if (error) {
+	}
+	if (error) {
 		return (
 			<div className={"d-flex justify-content-center mt-3 w-100"}>
 				<Alert variant="danger">
@@ -47,7 +37,8 @@ const GlyphUsers = () => {
 				</Alert>
 			</div>
 		);
-	} else if (queryMatchId) {
+	}
+	if (urlMatchId) {
 		return (
 			<>
 				<div className={classes.table}>
