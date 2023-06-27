@@ -4,6 +4,7 @@ import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import MatchDetails from "../MatchDetails/MatchDetails";
 import classes from "./Title.module.css";
 import { useUrlMatchId } from "../../hooks/useUrlMatchId";
+import logo from "../../assets/logo.png"
 
 const Title = () => {
 	const dispatch = useTypedDispatch();
@@ -24,7 +25,7 @@ const Title = () => {
 				>
 					<img
 						className={classes.logo}
-						src={require("../../assets/logo.png")}
+						src={logo}
 						alt="logo"
 					/>
 				</NavLink>

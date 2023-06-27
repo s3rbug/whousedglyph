@@ -1,4 +1,4 @@
-import { HEROES } from "../../utils/heroes_list";
+import { HEROES } from "../../utils/heroes-list";
 import {
 	GlyphStateType,
 	GlyphType,

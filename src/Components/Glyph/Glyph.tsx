@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap"
 import { GlyphType, TeamType } from "../../types/glyph"
-import CustomLink from "../../utils/CustomLink"
+import CustomLink from "../CustomLink/CustomLink"
 import classes from "./Glyph.module.css"
 
 type PropsType = {
