@@ -42,7 +42,7 @@ const glyphSlice = createSlice({
 	name: "glyph",
 	initialState: initialState,
 	reducers: {
-		setMatchId(state, action: PayloadAction<{ matchId: string }>) {
+		setMatchId(state, action: PayloadAction<{ matchId: string | null }>) {
 			const { matchId } = action.payload;
 			state.matchId = matchId;
 		},
