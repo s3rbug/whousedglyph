@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import { setGlyphs } from "../../redux/middleware/glyph";
-import { useTypedDispatch } from "../../redux/store/store";
+import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import { glyphActions } from "../../redux/slices/glyph";
 import { useEffect } from "react";
 import { useUrlMatchId } from "../../hooks/useUrlMatchId";
+import clsx from "clsx";
+import classes from "./MatchDetailsForm.module.css"
 
 type FormDataType = {
 	matchId: string;
@@ -12,9 +14,9 @@ type FormDataType = {
 
 const MatchDetailsForm = () => {
 	const { register, handleSubmit, reset } = useForm<FormDataType>({});
-	const dispatch = useTypedDispatch();
-
 	const { urlMatchId, setUrlMatchId } = useUrlMatchId();
+	const isLoading = useTypedSelector(state => state.ui.isLoading)
+	const dispatch = useTypedDispatch();
 
 	const onSubmit = (data: FormDataType) => {
 		dispatch(glyphActions.clearGlyphs());
@@ -33,12 +35,12 @@ const MatchDetailsForm = () => {
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<Form.Group className="d-flex justify-content-center">
 					<Form.Control
-						className={"ps-3 me-2 rounded-pill w-auto"}
+						className={clsx(classes.input, "ps-3 me-2 rounded-pill w-auto")}
 						type="text"
 						placeholder="Enter match id"
 						{...register("matchId", { required: "Enter match id" })}
 					/>
-					<Button variant="primary" type="submit">
+					<Button className="rounded-pill" variant="primary" type="submit" disabled={isLoading}>
 						Submit
 					</Button>
 				</Form.Group>

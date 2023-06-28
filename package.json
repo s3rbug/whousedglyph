@@ -33,6 +33,7 @@
   },
   "scripts": {
     "start": "vite",
+    "start:dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "predeploy": "yarn build",

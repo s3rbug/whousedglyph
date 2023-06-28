@@ -17,6 +17,7 @@ const Glyph = ({ glyph }: PropsType) => {
 	const getTeamTypeImage = (): string => {
 		return glyph.teamType === TeamType.Dire ? direImage : radiantImage;
 	};
+
 	const getHeroLink = (): string => {
 		return glyph.heroName === "unknown"
 			? ""
@@ -28,7 +29,7 @@ const Glyph = ({ glyph }: PropsType) => {
 	}
 
 	return (
-		<Card>
+		<Card className={classes.card}>
 			<CustomLink href={getHeroLink()}>
 				<Card.Img
 					src={getViteImgUrl(`../../assets/hero_${glyph.heroId}.png`)}

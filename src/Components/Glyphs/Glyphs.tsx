@@ -3,7 +3,7 @@ import { Alert } from "react-bootstrap";
 import { setGlyphs } from "../../redux/middleware/glyph";
 import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import Glyph from "../Glyph/Glyph";
-import classes from "./GlyphUsers.module.css";
+import classes from "./Glyphs.module.css";
 import { useUrlMatchId } from "../../hooks/useUrlMatchId";
 import { CenteredSpinner } from "../CenteredSpinner/CenteredSpinner";
 
@@ -28,6 +28,7 @@ const GlyphUsers = () => {
 			<CenteredSpinner />
 		);
 	}
+
 	if (error) {
 		return (
 			<div className={"d-flex justify-content-center mt-3 w-100"}>
@@ -38,6 +39,7 @@ const GlyphUsers = () => {
 			</div>
 		);
 	}
+
 	if (urlMatchId) {
 		return (
 			<>
@@ -49,6 +51,7 @@ const GlyphUsers = () => {
 			</>
 		);
 	}
+	
 	return null;
 };
 

@@ -1,5 +1,6 @@
 .card {
     width: 300px;
+    transition: box-shadow 300ms ease-in;
 }
 
 @media (max-width: 992px) {
@@ -11,7 +12,24 @@
     }
 }
 
+@media (max-width: 575.98px) {
+    .card {
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .icons a img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
 .icons a img {
     width: 35px;
     height: 35px;
+}
+
+.card:hover {
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
 }

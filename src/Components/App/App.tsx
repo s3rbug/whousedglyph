@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import GlyphUsers from "../GlyphUsers/GlyphUsers";
+import GlyphUsers from "../Glyphs/Glyphs";
 import MatchDetailsForm from "../MatchDetailsForm/MatchDetailsForm";
 import Title from "../Title/Title";
 

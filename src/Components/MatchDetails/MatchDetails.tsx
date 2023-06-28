@@ -4,10 +4,9 @@ import { Button, Card, Overlay, Tooltip } from "react-bootstrap";
 import { useTypedSelector } from "../../redux/store/store";
 import CustomLink from "../CustomLink/CustomLink";
 import classes from "./MatchDetails.module.css";
-import stratzLogo from "../../assets/stratz.png"
-import dotabuffLogo from "../../assets/dotabuff.png"
-import opendotaLogo from "../../assets/opendota.png"
-
+import stratzLogo from "../../assets/stratz.png";
+import dotabuffLogo from "../../assets/dotabuff.png";
+import opendotaLogo from "../../assets/opendota.png";
 
 const MatchDetails = () => {
 	const matchId = useTypedSelector((state) => state.glyph.matchId);
@@ -51,7 +50,7 @@ const MatchDetails = () => {
 					<span
 						className={clsx(
 							classes.icons,
-							"d-flex justify-content-around ps-4 pe-3 mt-2"
+							"d-flex justify-content-around ps-4 pe-3 mt-3"
 						)}
 					>
 						<CustomLink href={`https://stratz.com/matches/${matchId}`}>
