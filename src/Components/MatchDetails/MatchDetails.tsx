@@ -4,9 +4,6 @@ import { Button, Card, Overlay, Tooltip } from "react-bootstrap";
 import { useTypedSelector } from "../../redux/store/store";
 import CustomLink from "../CustomLink/CustomLink";
 import classes from "./MatchDetails.module.css";
-import stratzLogo from "../../assets/stratz.png";
-import dotabuffLogo from "../../assets/dotabuff.png";
-import opendotaLogo from "../../assets/opendota.png";
 
 const MatchDetails = () => {
 	const matchId = useTypedSelector((state) => state.glyph.matchId);
@@ -54,13 +51,13 @@ const MatchDetails = () => {
 						)}
 					>
 						<CustomLink href={`https://stratz.com/matches/${matchId}`}>
-							<img src={stratzLogo} alt="stratz" />
+							<img src={"/assets/stratz.png"} alt="stratz" />
 						</CustomLink>
 						<CustomLink href={`https://www.dotabuff.com/matches/${matchId}`}>
-							<img src={dotabuffLogo} alt="dotabuff" />
+							<img src={"/assets/dotabuff.png"} alt="dotabuff" />
 						</CustomLink>
 						<CustomLink href={`https://www.opendota.com/matches/${matchId}`}>
-							<img src={opendotaLogo} alt="opendota" />
+							<img src={"/assets/opendota.png"} alt="opendota" />
 						</CustomLink>
 					</span>
 				</Card.Text>

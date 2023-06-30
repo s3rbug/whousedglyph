@@ -2,12 +2,6 @@ import { Card } from "react-bootstrap";
 import { GlyphType, TeamType } from "../../types/glyph";
 import CustomLink from "../CustomLink/CustomLink";
 import classes from "./Glyph.module.css";
-import radiantImage from "../../assets/radiant.png";
-import direImage from "../../assets/dire.png";
-import steamLogo from "../../assets/steam.png";
-import stratzLogo from "../../assets/stratz.png";
-import dotabuffLogo from "../../assets/dotabuff.png";
-import opendotaLogo from "../../assets/opendota.png";
 
 type PropsType = {
 	glyph: GlyphType;
@@ -15,7 +9,7 @@ type PropsType = {
 
 const Glyph = ({ glyph }: PropsType) => {
 	const getTeamTypeImage = (): string => {
-		return glyph.teamType === TeamType.Dire ? direImage : radiantImage;
+		return glyph.teamType === TeamType.Dire ? "/assets/dire.png" : "/assets/radiant.png";
 	};
 
 	const getHeroLink = (): string => {
@@ -24,15 +18,11 @@ const Glyph = ({ glyph }: PropsType) => {
 			: `https://dota2.fandom.com/wiki/${glyph.heroName}`;
 	};
 
-	function getViteImgUrl(path: string) {
-		return new URL(`${path}`, import.meta.url).href;
-	}
-
 	return (
 		<Card className={classes.card}>
 			<CustomLink href={getHeroLink()}>
 				<Card.Img
-					src={getViteImgUrl(`../../assets/hero_${glyph.heroId}.png`)}
+					src={`/assets/hero_${glyph.heroId}.png`}
 					alt={glyph.heroName}
 				/>
 			</CustomLink>
@@ -50,20 +40,20 @@ const Glyph = ({ glyph }: PropsType) => {
 						<CustomLink
 							href={`https://steamcommunity.com/profiles/${glyph.steamId}/`}
 						>
-							<img src={steamLogo} alt="steam" />
+							<img src={"/assets/steam.png"} alt="steam" />
 						</CustomLink>
 						<CustomLink href={`https://stratz.com/players/${glyph.dotaUserId}`}>
-							<img src={stratzLogo} alt="stratz" />
+							<img src={"/assets/stratz.png"} alt="stratz" />
 						</CustomLink>
 						<CustomLink
 							href={`https://www.dotabuff.com/players/${glyph.dotaUserId}`}
 						>
-							<img src={dotabuffLogo} alt="dotabuff" />
+							<img src={"/assets/dotabuff.png"} alt="dotabuff" />
 						</CustomLink>
 						<CustomLink
 							href={`https://www.opendota.com/players/${glyph.dotaUserId}`}
 						>
-							<img src={opendotaLogo} alt="opendota" />
+							<img src={"/assets/opendota.png"} alt="opendota" />
 						</CustomLink>
 					</span>
 				</Card.Text>
