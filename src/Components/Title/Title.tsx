@@ -3,6 +3,7 @@ import { glyphActions } from "../../redux/slices/glyph";
 import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import MatchDetails from "../MatchDetails/MatchDetails";
 import classes from "./Title.module.css";
+import logoImage from "../../../public/assets/logo.png"
 
 const Title = () => {
 	const dispatch = useTypedDispatch();
@@ -22,7 +23,7 @@ const Title = () => {
 				>
 					<img
 						className={classes.logo}
-						src={"/assets/logo.png"}
+						src={logoImage}
 						alt="logo"
 					/>
 				</NavLink>
