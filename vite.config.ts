@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: `/${config.ROUTER_BASE_URL}`
+  base: `/${config.BASE_URL}`
 });

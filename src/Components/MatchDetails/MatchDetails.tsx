@@ -5,6 +5,10 @@ import { useTypedSelector } from "../../redux/store/store";
 import CustomLink from "../CustomLink/CustomLink";
 import classes from "./MatchDetails.module.css";
 
+import stratzLogo from "../../../public/assets/stratz.png"
+import dotabuffLogo from "../../../public/assets/dotabuff.png";
+import opendotaLogo from "../../../public/assets/opendota.png";
+
 const MatchDetails = () => {
 	const matchId = useTypedSelector((state) => state.glyph.matchId);
 	const tooltipTarget = useRef(null);
@@ -51,13 +55,13 @@ const MatchDetails = () => {
 						)}
 					>
 						<CustomLink href={`https://stratz.com/matches/${matchId}`}>
-							<img src={"/assets/stratz.png"} alt="stratz" />
+							<img src={stratzLogo} alt="stratz" />
 						</CustomLink>
 						<CustomLink href={`https://www.dotabuff.com/matches/${matchId}`}>
-							<img src={"/assets/dotabuff.png"} alt="dotabuff" />
+							<img src={dotabuffLogo} alt="dotabuff" />
 						</CustomLink>
 						<CustomLink href={`https://www.opendota.com/matches/${matchId}`}>
-							<img src={"/assets/opendota.png"} alt="opendota" />
+							<img src={opendotaLogo} alt="opendota" />
 						</CustomLink>
 					</span>
 				</Card.Text>

@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter basename={config.ROUTER_BASE_URL}>
+  <BrowserRouter basename={config.BASE_URL}>
     <Provider store={store}>
       <App />
     </Provider>
