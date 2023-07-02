@@ -3,7 +3,7 @@ import { glyphActions } from "../../redux/slices/glyph";
 import { useTypedDispatch, useTypedSelector } from "../../redux/store/store";
 import MatchDetails from "../MatchDetails/MatchDetails";
 import classes from "./Title.module.css";
-import logoImage from "../../../public/assets/logo.png"
+import logoImage from "../../assets/logo.png"
 
 const Title = () => {
 	const dispatch = useTypedDispatch();
@@ -11,7 +11,7 @@ const Title = () => {
 	const matchId = useTypedSelector(state => state.glyph.matchId)
 
 	return (
-		<div className="d-flex justify-content-center mt-3">
+		<>
 			{matchId && !isLoading ? (
 				<MatchDetails />
 			) : (
@@ -28,7 +28,7 @@ const Title = () => {
 					/>
 				</NavLink>
 			)}
-		</div>
+		</>
 	);
 };
 

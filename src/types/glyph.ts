@@ -5,10 +5,11 @@ export type GlyphStateType = {
 
 export type UiStateType = {
 	isLoading: boolean;
-	error: UiErrorType;
+	error: AlertType;
+	warning: AlertType;
 };
 
-export type UiErrorType = {
+export type AlertType = {
 	message: string;
 	header: string;
 } | null;

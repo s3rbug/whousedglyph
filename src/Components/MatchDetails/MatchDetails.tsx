@@ -2,12 +2,11 @@ import clsx from "clsx";
 import { useRef, useState } from "react";
 import { Button, Card, Overlay, Tooltip } from "react-bootstrap";
 import { useTypedSelector } from "../../redux/store/store";
-import CustomLink from "../CustomLink/CustomLink";
 import classes from "./MatchDetails.module.css";
-
-import stratzLogo from "../../../public/assets/stratz.png"
-import dotabuffLogo from "../../../public/assets/dotabuff.png";
-import opendotaLogo from "../../../public/assets/opendota.png";
+import stratzLogo from "../../assets/stratz.png";
+import dotabuffLogo from "../../assets/dotabuff.png";
+import opendotaLogo from "../../assets/opendota.png";
+import IconLink from "../IconLink/IconLink";
 
 const MatchDetails = () => {
 	const matchId = useTypedSelector((state) => state.glyph.matchId);
@@ -15,7 +14,7 @@ const MatchDetails = () => {
 	const [showTooltip, setShowTooltip] = useState(false);
 
 	const copyMatchIdToClipboard = async () => {
-		navigator.clipboard.writeText(matchId || "");
+		navigator.clipboard.writeText(matchId ?? "");
 		setShowTooltip(true);
 		setTimeout(() => {
 			setShowTooltip(false);
@@ -29,7 +28,7 @@ const MatchDetails = () => {
 					ref={tooltipTarget}
 					className={clsx(
 						classes.title,
-						"d-flex flex-column justify-content-evenly ml-auto mr-auto"
+						"d-flex flex-column justify-content-evenly"
 					)}
 					onClick={copyMatchIdToClipboard}
 				>
@@ -54,15 +53,21 @@ const MatchDetails = () => {
 							"d-flex justify-content-around ps-4 pe-3 mt-3"
 						)}
 					>
-						<CustomLink href={`https://stratz.com/matches/${matchId}`}>
-							<img src={stratzLogo} alt="stratz" />
-						</CustomLink>
-						<CustomLink href={`https://www.dotabuff.com/matches/${matchId}`}>
-							<img src={dotabuffLogo} alt="dotabuff" />
-						</CustomLink>
-						<CustomLink href={`https://www.opendota.com/matches/${matchId}`}>
-							<img src={opendotaLogo} alt="opendota" />
-						</CustomLink>
+						<IconLink
+							href={`https://stratz.com/matches/${matchId}`}
+							src={stratzLogo}
+							alt={"stratz"}
+						/>
+						<IconLink
+							href={`https://www.dotabuff.com/matches/${matchId}`}
+							src={dotabuffLogo}
+							alt={"dotabuff"}
+						/>
+						<IconLink
+							href={`https://www.opendota.com/matches/${matchId}`}
+							src={opendotaLogo}
+							alt={"opendota"}
+						/>
 					</span>
 				</Card.Text>
 			</Card.Body>

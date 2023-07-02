@@ -1,18 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import GlyphUsers from "../Glyphs/Glyphs";
-import MatchDetailsForm from "../MatchDetailsForm/MatchDetailsForm";
-import Title from "../Title/Title";
+import Header from "../Header/Header";
 
 const App = () => {
-  return (
-    <>
-      <Title/>
-      <MatchDetailsForm/>
-      <Routes>
-        <Route index element={<GlyphUsers/>} />
-      </Routes>
-    </>
-  );
-}
+	return (
+		<>
+			<Header />
+			<Routes>
+				<Route index element={<GlyphUsers />} />
+			</Routes>
+		</>
+	);
+};
 
 export default App;

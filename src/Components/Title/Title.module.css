@@ -6,17 +6,3 @@
 .logo:hover {
     transform: scale(1.05);
 }
-
-@media (max-width: 575.98px) {
-    .title {
-        font-size: 2em;
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (min-width: 576px) {
-    .title {
-        font-size: 4em;
-        grid-template-columns: 1fr;
-    }
-}
