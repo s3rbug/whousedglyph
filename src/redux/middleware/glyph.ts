@@ -5,7 +5,7 @@ import { AppThunkType } from "../store/store";
 import { AxiosError, HttpStatusCode } from "axios";
 
 export const setGlyphs =
-	(matchId: string): AppThunkType =>
+	(matchId: string, setUrlMatchId?: (id: string) => void): AppThunkType =>
 	async (dispatch) => {
 		dispatch(uiActions.setIsLoading({ isLoading: true }));
 		dispatch(uiActions.setError({ error: null }));
@@ -26,6 +26,9 @@ export const setGlyphs =
 				}
 				dispatch(glyphActions.setGlyphs({ newGlyphs: response.data }));
 				dispatch(glyphActions.setMatchId({ matchId }));
+				if (setUrlMatchId) {
+					setUrlMatchId(matchId);
+				}
 			})
 			.catch((error: AxiosError) => {
 				dispatch(glyphActions.clearGlyphs());

@@ -20,7 +20,7 @@ const GlyphUsers = () => {
 	const { urlMatchId } = useUrlMatchId();
 
 	useEffect(() => {
-		if (urlMatchId && !matchId) {
+		if (urlMatchId && matchId === null) {
 			dispatch(setGlyphs(urlMatchId));
 		}
 	}, [urlMatchId, matchId, dispatch]);

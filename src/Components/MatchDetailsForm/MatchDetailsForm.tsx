@@ -20,9 +20,8 @@ const MatchDetailsForm = () => {
 	const dispatch = useTypedDispatch();
 
 	const onSubmit = (data: FormDataType) => {
-		dispatch(glyphActions.clearGlyphs());
-		setUrlMatchId(data.matchId);
-		dispatch(setGlyphs(data.matchId));
+		dispatch(glyphActions.clearGlyphs());		
+		dispatch(setGlyphs(data.matchId, setUrlMatchId));
 	};
 
 	useEffect(() => {
