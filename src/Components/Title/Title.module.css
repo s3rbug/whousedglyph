@@ -1,8 +1,12 @@
+.root {
+	display: flex;
+}
+
 .logo {
-    height: 150px;
-    transition: transform .2s ease-in-out;
+	height: 150px;
+	transition: transform 0.2s ease-in-out;
 }
 
 .logo:hover {
-    transform: scale(1.05);
+	transform: scale(1.05);
 }

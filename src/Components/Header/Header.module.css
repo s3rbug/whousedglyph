@@ -1,9 +1,45 @@
-.header > * {
-  width: clamp(300px, 50%, 400px);
+.header > *:not(.coffee) {
+	width: clamp(300px, 50%, 400px);
+}
+
+.coffee {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+
+.coffee,
+.coffee img {
+	max-height: 55px;
+}
+
+.coffee img {
+	transition: transform 150ms ease-in;
+}
+
+.coffee img:hover {
+	transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+	.header > *:not(.coffee) {
+		width: 70%;
+	}
+	.coffee {
+		position: static;
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+	.coffee,
+	.coffee img {
+		max-height: fit-content;
+		width: 100%;
+	}
 }
 
 @media (max-width: 575.98px) {
-  .header > * {
-    width: 100%;
-  } 
+	.header > *:not(.coffee) {
+		width: 100%;
+	}
 }

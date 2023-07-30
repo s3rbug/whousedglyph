@@ -1,21 +1,22 @@
 .card {
-    transition: box-shadow 300ms ease-in;
+	width: 100%;
+	transition: box-shadow 300ms ease-in;
 }
 
 .card:hover {
-    box-shadow: var(--hover-shadow);
+	box-shadow: var(--hover-shadow);
 }
 
 .icons a img {
-    width: calc(var(--icon-size) + 5px);
-    height: calc(var(--icon-size) + 5px);
+	width: calc(var(--icon-size) + 5px);
+	height: calc(var(--icon-size) + 5px);
 }
 
 @media (max-width: 992px) {
-    .title button:hover {
-        color: black;
-        background: white;
-        box-shadow: none !important;
-        outline: none !important;
-    }
+	.title button:hover {
+		color: black;
+		background: white;
+		box-shadow: none !important;
+		outline: none !important;
+	}
 }
