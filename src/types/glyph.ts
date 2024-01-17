@@ -15,8 +15,8 @@ export type AlertType = {
 } | null;
 
 export enum TeamType {
-	Dire = 2,
-	Radiant = 3,
+	Radiant = 2,
+	Dire = 3,
 }
 
 export type ServerGlyphType = {
