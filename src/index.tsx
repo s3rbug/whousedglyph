@@ -1,21 +1,20 @@
-import ReactDOM from 'react-dom/client';
-import App from './Components/App/App';
-import { Provider } from "react-redux"
-import store from "../src/redux/store/store"
-import { BrowserRouter } from "react-router-dom";
-import { config } from './utils/config';
-import './utils/ensure-basename'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { RouterProvider } from "@tanstack/react-router";
+import { router } from "./router";
+import { TooltipProvider } from "@/components/ui/Tooltip";
+import { QueryClientProvider } from "@/providers/QueryClientProvider";
+import "./index.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-  <BrowserRouter basename={config.BASE_URL}>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>
+  <Provider store={store}>
+    <QueryClientProvider>
+      <TooltipProvider>
+        <RouterProvider router={router} />
+      </TooltipProvider>
+    </QueryClientProvider>
+  </Provider>,
 );

@@ -1,7 +1,0 @@
-.input {
-  transition: box-shadow 300ms ease-in;
-}
-
-.input:hover, .input:focus {
-  box-shadow: var(--hover-shadow);
-}

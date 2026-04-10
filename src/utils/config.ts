@@ -1,3 +1,3 @@
 export const config = {
-    BASE_URL: "whousedglyph"
-}
+  BASE_URL: "whousedglyph",
+};

@@ -1,13 +1,12 @@
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 
 export const useUrlMatchId = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-
-	const urlMatchId = searchParams.get("replay");
+  const { replay: urlMatchId } = useSearch({ from: "/" });
+  const navigate = useNavigate({ from: "/" });
 
   function setUrlMatchId(newUrlMatchId: string) {
-    setSearchParams(createSearchParams({ replay: newUrlMatchId }));
+    navigate({ search: { replay: newUrlMatchId } });
   }
 
-	return { urlMatchId, setUrlMatchId };
+  return { urlMatchId: urlMatchId ?? null, setUrlMatchId };
 };

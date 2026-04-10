@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 230">
+  <text font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="108" fill="#4db8c8">
+    <tspan x="10" y="98">Who</tspan>
+    <tspan x="10" y="206">Used</tspan>
+  </text>
+
+  <!-- Circle border -->
+  <circle cx="435" cy="115" r="97" stroke="#4db8c8" stroke-width="8" fill="none"/>
+
+  <!-- Chess rook, centered at (435, 115) — all y values shifted +7 from original -->
+  <!-- 3 battlements: width 22, gap 9 → total 84px wide, starts at x=393 -->
+  <rect x="393" y="49" width="22" height="30" rx="3" fill="#4db8c8"/>
+  <rect x="424" y="49" width="22" height="30" rx="3" fill="#4db8c8"/>
+  <rect x="455" y="49" width="22" height="30" rx="3" fill="#4db8c8"/>
+  <!-- Parapet connector -->
+  <rect x="387" y="75" width="96" height="13" rx="2" fill="#4db8c8"/>
+  <!-- Body shaft -->
+  <rect x="400" y="88" width="70" height="56" fill="#4db8c8"/>
+  <!-- Lower connector -->
+  <rect x="388" y="144" width="94" height="13" rx="2" fill="#4db8c8"/>
+  <!-- Base -->
+  <rect x="376" y="157" width="118" height="24" rx="4" fill="#4db8c8"/>
+</svg>
