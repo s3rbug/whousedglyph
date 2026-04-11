@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { glyphApi, ServerGlyphType } from "@/api/glyphApi";
+import { glyphApi, GlyphApiError, ServerGlyphType } from "@/api/glyphApi";
 import { GlyphType } from "@/components/glyph/glyph.type";
 import {
   getHeroId,
@@ -14,6 +14,7 @@ import { HeroType } from "../api/heroesApi";
 export type AlertType = {
   message: string;
   header: string;
+  description?: string;
 };
 
 interface UseGlyphsResult {
@@ -78,9 +79,11 @@ export const useGlyphs = (matchId: string | null): UseGlyphsResult => {
   }
 
   if (error) {
+    const desc = error instanceof GlyphApiError ? error.description : undefined;
     parsedError = {
-      message: `Match '${matchId}' is not found`,
-      header: "Not found",
+      message: error instanceof Error ? error.message : `Match '${matchId}' is not found`,
+      header: "Error",
+      ...(desc !== undefined && { description: desc }),
     };
   }
 

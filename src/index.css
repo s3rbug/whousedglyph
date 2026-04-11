@@ -115,7 +115,7 @@ body {
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.60 0.10 200);
+  --ring: oklch(0.6 0.1 200);
   --hover-shadow: 0 0 14px oklch(0.72 0.12 195 / 0.35);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);

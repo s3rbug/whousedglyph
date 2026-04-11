@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/Card";
 
 import { CustomLink } from "../common/icon-link/custom-link/CustomLink";
-import { config } from "../../utils/config";
 import { IconLink } from "../common/icon-link/IconLink";
 import radiantImage from "./images/radiant.png";
 import direImage from "./images/dire.png";
@@ -9,11 +8,19 @@ import steamLogo from "../../assets/steam.png";
 import stratzLogo from "../../assets/stratz.png";
 import dotabuffLogo from "../../assets/dotabuff.png";
 import opendotaLogo from "../../assets/opendota.png";
+import unknownHeroPng from "./images/hero_unknown.png";
 import { GlyphType, TeamType } from "./glyph.type";
 
 interface Props {
   glyph: GlyphType;
 }
+
+const prepareHeroFilename = (heroName: string) => {
+  if (heroName === "unknown") {
+    return unknownHeroPng;
+  }
+  return `https://cdn.steamstatic.com/apps/dota2/images/dota_react/heroes/${heroName}.png`;
+};
 
 export const GlyphItem = ({ glyph }: Props) => {
   const getTeamTypeImage = (): string => {
@@ -21,17 +28,19 @@ export const GlyphItem = ({ glyph }: Props) => {
   };
 
   const getHeroLink = (): string => {
-    return glyph.heroName === "unknown" ? "" : `https://dota2.fandom.com/wiki/${glyph.heroName}`;
+    return glyph.heroName === "unknown" ? "" : `https://liquipedia.net/dota2/${glyph.heroName}`;
   };
 
   return (
-    <Card className="pt-0 hover-shadow-card">
+    <Card className="group pt-0 hover-shadow-card">
       <CustomLink href={getHeroLink()}>
-        <img
-          className="w-full"
-          src={`/${config.BASE_URL}/heroes/hero_${glyph.heroId}.png`}
-          alt={glyph.heroName}
-        />
+        <div className="overflow-hidden">
+          <img
+            className="w-full transition-transform duration-300 group-hover:scale-110"
+            src={prepareHeroFilename(glyph.heroName)}
+            alt={glyph.heroName}
+          />
+        </div>
       </CustomLink>
       <CardContent className="flex grow flex-col justify-between gap-4">
         <div className="text-2xl">

@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [tailwindcss(), react(), oxlint()],
-  base: "/whousedglyph",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -11,7 +11,7 @@ export const AppHeader = () => {
       <div className="w-[70%] max-[575.98px]:w-full lg:w-[clamp(300px,50%,400px)]">
         <MatchDetailsForm />
       </div>
-      <div className="flex w-full justify-center lg:fixed lg:top-6 lg:right-6 lg:w-auto">
+      <div className="flex w-full justify-center lg:absolute lg:top-0 lg:right-0 lg:w-auto">
         <BuyMeCoffee />
       </div>
     </div>

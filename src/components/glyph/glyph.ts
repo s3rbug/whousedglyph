@@ -16,7 +16,7 @@ export const getHeroId = (heroId: number, heroes: HeroType[]): number => {
 
 export const getHeroName = (heroId: number, heroes: HeroType[]): string => {
   const hero = heroes.find((hero) => hero.id === heroId);
-  return hero?.localized_name ?? "unknown";
+  return hero?.name.replace("npc_dota_hero_", "") ?? "unknown";
 };
 
 export const getDotaId = (userId: string): string => {

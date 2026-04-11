@@ -3,13 +3,19 @@ import { useGlyphs } from "@/hooks/useGlyphs";
 import { CenteredSpinner } from "../common/centered-spinner/CenteredSpinner";
 import { CenteredAlert } from "../common/centered-alert/CenteredAlert";
 import { GlyphItem } from "./GlyphItem";
+import { useGlyphError } from "@/context/GlyphErrorContext";
 
 export const GlyphList = () => {
   const { urlMatchId } = useUrlMatchId();
   const { glyphs, isLoading, error, warning } = useGlyphs(urlMatchId);
+  const { fetchError } = useGlyphError();
 
   if (isLoading) {
     return <CenteredSpinner />;
+  }
+
+  if (fetchError !== null) {
+    return <CenteredAlert variant="destructive" info={fetchError} />;
   }
 
   if (error) {

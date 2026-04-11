@@ -30,8 +30,25 @@ const routeTree = rootRoute.addChildren([indexRoute]);
 
 export const router = createRouter({
   routeTree,
-  basepath: "/whousedglyph",
   history,
+  stringifySearch: (search) => {
+    const params = new URLSearchParams();
+    for (const [key, value] of Object.entries(search)) {
+      if (value !== undefined && value !== null) {
+        params.set(key, String(value));
+      }
+    }
+    const str = params.toString();
+    return str ? `?${str}` : "";
+  },
+  parseSearch: (searchStr) => {
+    const params = new URLSearchParams(searchStr);
+    const result: Record<string, string> = {};
+    params.forEach((value, key) => {
+      result[key] = value;
+    });
+    return result;
+  },
 });
 
 declare module "@tanstack/react-router" {

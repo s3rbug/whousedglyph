@@ -6,7 +6,7 @@ export const BuyMeCoffee = () => {
       <img
         src={coffeeSvg}
         alt="Buy Me A Coffee"
-        className="transition-transform duration-150 ease-in hover:scale-110"
+        className="w-62.5 transition-transform duration-150 ease-in hover:scale-110"
       />
     </a>
   );

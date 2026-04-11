@@ -1,5 +1,16 @@
 import { baseURL } from "./api";
 
+export class GlyphApiError extends Error {
+  description?: string;
+  constructor(message: string, description?: string) {
+    super(message);
+    this.name = "GlyphApiError";
+    if (description !== undefined) {
+      this.description = description;
+    }
+  }
+}
+
 export type ServerGlyphType = {
   HeroID: number;
   MatchID: number;
@@ -24,7 +35,26 @@ export const glyphApi = {
       return { status: 202, glyphs: [] };
     }
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+      const errorBody = await response.json().catch(() => null);
+      throw new GlyphApiError(
+        errorBody?.message ?? `HTTP ${response.status}`,
+        errorBody?.description,
+      );
+    }
+    const serverGlyphs: ServerGlyphType[] = await response.json();
+    return { status: response.status, glyphs: serverGlyphs };
+  },
+
+  async uploadDemFile(file: File): Promise<GetGlyphsResponse> {
+    const body = new FormData();
+    body.append("dem", file);
+    const response = await fetch(`${baseURL}glyph/file`, { method: "POST", body });
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => null);
+      throw new GlyphApiError(
+        errorBody?.message ?? `HTTP ${response.status}`,
+        errorBody?.description,
+      );
     }
     const serverGlyphs: ServerGlyphType[] = await response.json();
     return { status: response.status, glyphs: serverGlyphs };

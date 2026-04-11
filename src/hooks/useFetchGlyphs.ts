@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { glyphApi, GetGlyphsResponse } from "@/api/glyphApi";
+import { glyphApi, GlyphApiError, GetGlyphsResponse } from "@/api/glyphApi";
 import { AlertType } from "@/hooks/useGlyphs";
 
 interface UseFetchGlyphsResult {
@@ -40,9 +40,11 @@ export const useFetchGlyphs = (): UseFetchGlyphsResult => {
   }
 
   if (error) {
+    const desc = error instanceof GlyphApiError ? error.description : undefined;
     parsedError = {
-      message: "Failed to fetch glyphs",
+      message: error instanceof Error ? error.message : "Failed to fetch glyphs",
       header: "Error",
+      ...(desc !== undefined && { description: desc }),
     };
   }
 

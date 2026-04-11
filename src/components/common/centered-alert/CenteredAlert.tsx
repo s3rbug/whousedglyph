@@ -11,6 +11,9 @@ export const CenteredAlert = ({ info, variant }: Props) => {
     <div className="flex w-full justify-center">
       <Alert variant={variant} className="max-w-lg">
         <AlertTitle>{info.header}</AlertTitle>
+        {info.description !== undefined && (
+          <AlertDescription className="text-xs opacity-70">{info.description}</AlertDescription>
+        )}
         <AlertDescription>{info.message}</AlertDescription>
       </Alert>
     </div>
